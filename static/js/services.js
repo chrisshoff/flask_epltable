@@ -6,3 +6,59 @@ eplTableServices.factory('Team', ['$resource',
             query: { method: "GET" }
         });
     }]);
+
+eplTableServices.factory('D3js', [
+    function() {
+        return {
+            draw_graph: function(data) {
+                var m = [50, 50, 50, 50];
+                var w = $("#graph").width() - m[1] - m[3];
+                var h = 600 - m[0] - m[2];
+
+                var x = d3.scale.linear().domain([1, data.length]).range([0, w]);
+                var y = d3.scale.linear().domain([data[data.length-1]-5, data[0]+5]).range([h, 0]);
+
+                var line = d3.svg.line()
+                    .x(function(d, i) {
+                        return x(i+1);
+                    })
+                    .y(function(d) {
+                        return y(d);
+                    });
+
+                var graph = d3.select("#graph").append("svg:svg")
+                    .attr("width", w + m[1] + m[3])
+                    .attr("height", h + m[0] + m[2])
+                    .append("svg:g")
+                    .attr("transform", "translate(" + m[3] + "," + m[0] + ")");
+
+                var xAxis = d3.svg.axis().scale(x).tickSize(-h).ticks(20).tickSubdivide(true);
+                graph.append("svg:g")
+                    .attr("class", "x axis")
+                    .attr("transform", "translate(0," + h + ")")
+                    .call(xAxis);
+
+                var yAxisLeft = d3.svg.axis().scale(y).ticks(4).orient("left");
+                graph.append("svg:g")
+                    .attr("class", "y axis")
+                    .attr("transform", "translate(0,0)")
+                    .call(yAxisLeft);
+
+                graph.append("text")
+                    .attr("x", w/2 )
+                    .attr("y",  h+50 )
+                    .style("text-anchor", "middle")
+                    .text("Team Position");
+
+                graph.append("text")
+                    .attr("transform", "rotate(-90)")
+                    .attr("y", -50)
+                    .attr("x", -h/2)
+                    .attr("dy", "1em")
+                    .style("text-anchor", "middle")
+                    .text("Points");
+
+                graph.append("svg:path").attr("d", line(data));
+            }
+        }
+    }])

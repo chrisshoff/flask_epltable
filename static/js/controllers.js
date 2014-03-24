@@ -58,6 +58,18 @@ eplTableControllers.controller('CannTableCtrl', ['$scope', 'Team',
         });
     }]);
 
+eplTableControllers.controller('VisualCtrl', ['$scope', 'Team', 'D3js',
+    function($scope, Team, D3js) {
+        $scope.type = 'visual';
+        Team.query(function(data) {
+            var points = [];
+            for (var i in data.results) {
+                points.push(data.results[i].points);
+            }
+            D3js.draw_graph(points);
+        });
+    }]);
+
 eplTableControllers.controller('DetailCtrl', ['$scope', '$routeParams', 'Team',
     function($scope, $routeParams, Team) {
         Team.get({ id: $routeParams.id }, function(data) {

@@ -19,6 +19,10 @@ eplTableApp.config(['$routeProvider',
                 templateUrl: '/static/partials/detail.html',
                 controller: 'DetailCtrl'
             }).
+            when('/visual', {
+                templateUrl: '/static/partials/visual.html',
+                controller: 'VisualCtrl'
+            }).
             otherwise({
                 redirectTo: '/standard'
             });
