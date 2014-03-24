@@ -29,6 +29,7 @@ eplTableControllers.controller('StandardTableCtrl', ['$scope', 'Team',
         Team.query(function(data) {
             var rows = [];
             for (var i in data.results) {
+                // Standard table request, just just add the data as-is to the rows list
                 eplTableControllers.add_tier(data.results[i]);
                 rows.push([data.results[i]]);
             }
@@ -44,8 +45,8 @@ eplTableControllers.controller('CannTableCtrl', ['$scope', 'Team',
         Team.query({ cann : true }, function(data) {
             var rows = []
             for (var i in data.results) {
-                console.log(data.results[i]);
                 if (data.results[i].length > 0) {
+                    // This is a cann table request, so there could be multiple or no teams in a single row
                     for (var j in data.results[i]) {
                         eplTableControllers.add_tier(data.results[i][j]);
                     }
@@ -63,9 +64,11 @@ eplTableControllers.controller('VisualCtrl', ['$scope', 'Team', 'D3js',
         $scope.type = 'visual';
         Team.query(function(data) {
             var points = [];
+            // This is a visual request, so we only need a list of the points
             for (var i in data.results) {
                 points.push(data.results[i].points);
             }
+            // Draw the graph using d3js
             D3js.draw_graph(points);
         });
     }]);
