@@ -36,6 +36,35 @@ eplTableServices.factory('D3js', [
                     .append("svg:g")
                     .attr("transform", "translate(" + m[3] + "," + m[0] + ")");
 
+                var tick_width = (w + 50)/20;
+
+                // Add first tier color
+                graph.append("rect")
+                    .attr("x", 1)
+                    .attr("y", 0)
+                    .style("opacity", 0.6)
+                    .attr("fill", "#27ae60")
+                    .attr("width", tick_width * 3)
+                    .attr("height", h);
+
+                // Add second tier color
+                graph.append("rect")
+                    .attr("x", tick_width * 3)
+                    .attr("y", 0)
+                    .style("opacity", 0.6)
+                    .attr("fill", "#e67e22")
+                    .attr("width", tick_width)
+                    .attr("height", h);
+
+                // Add third tier color
+                graph.append("rect")
+                    .attr("x", (w - tick_width * 3))
+                    .attr("y", 0)
+                    .style("opacity", 0.6)
+                    .attr("fill", "#c0392b")
+                    .attr("width", tick_width * 3)
+                    .attr("height", h);
+
                 // Draw the x-axis
                 var xAxis = d3.svg.axis().scale(x).tickSize(-h).ticks(20).tickSubdivide(true);
                 graph.append("svg:g")
