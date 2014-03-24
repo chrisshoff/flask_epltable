@@ -15,6 +15,10 @@ eplTableApp.config(['$routeProvider',
                 templateUrl: '/static/partials/table.html',
                 controller: 'CannTableCtrl'
             }).
+            when('/team/:id', {
+                templateUrl: '/static/partials/detail.html',
+                controller: 'DetailCtrl'
+            }).
             otherwise({
                 redirectTo: '/standard'
             });

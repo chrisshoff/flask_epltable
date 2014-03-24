@@ -1,0 +1,15 @@
+<div class="row detail">
+    <div class="col-xs-12">
+    <h1>Flask+Angular EPL Table Data</h1>
+    <ul class="nav nav-tabs">
+      <li><a href="#/standard">Standard</a></li>
+      <li><a href="#/cann">Cann</a></li>
+      <li class="active"><a href="#/team/{{ team.id }}">{{ team.name }} Detail</a></li>
+    </ul>
+    <h1>{{ team.name }}</h1>
+    <p><b>Current Position:</b> {{ team.position }}</p>
+    <p><b>Games Played:</b> {{ team.played }}</p>
+    <p><b>Points:</b> {{ team.points }}</p>
+    <p><b>Goal Difference:</b> {{ team.gd }}</p>
+    </div>
+</div>

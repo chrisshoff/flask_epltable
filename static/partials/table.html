@@ -1,5 +1,47 @@
-{{ type }} table.
-
-<div class="team-row" ng-repeat="row in rows">
-    Row: <span class="team-row" ng-repeat="team in row">{{ team.name }} - {{ team.points }}</div>
+<div class="row">
+    <div class="col-xs-12">
+        <h1>Flask+Angular EPL Table Data</h1>
+        <ul class="nav nav-tabs">
+          <li ng-class="{active: type == 'standard'}"><a href="#/standard">Standard</a></li>
+          <li ng-class="{active: type == 'cann'}"><a href="#/cann">Cann</a></li>
+        </ul>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Position</th>
+                    <th>Team</th>
+                    <th>Games Played</th>
+                    <th>Points</th>
+                    <th>Goal Diff</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="team-row" ng-class="{empty: !row[0]}" ng-repeat="row in rows">
+                    <td class="position">
+                        {{ row[0].points }}
+                    </td>
+                    <td>
+                        <div ng-repeat="team in row" class="{{ team.tier }}">
+                        <a href="#/team/{{ team.id }}">{{ team.name }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div ng-repeat="team in row" class="{{ team.tier }}">
+                        {{ team.played }}
+                        </div>
+                    </td>
+                    <td>
+                        <div ng-repeat="team in row" class="{{ team.tier }}">
+                        {{ team.points }}
+                        </div>
+                    </td>
+                    <td>
+                        <div ng-repeat="team in row" class="{{ team.tier }}">
+                        {{ team.gd }}
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
