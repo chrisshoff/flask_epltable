@@ -1,17 +1,18 @@
 var eplTableApp = angular.module('eplTableApp', [
     'ngRoute',
-    'eplTableControllers'
+    'eplTableControllers',
+    'eplTableServices'
 ]);
 
 eplTableApp.config(['$routeProvider',
     function($routeProvider) {
         $routeProvider.
             when('/standard', {
-                templateUrl: '/static/partials/standard-table.html',
+                templateUrl: '/static/partials/table.html',
                 controller: 'StandardTableCtrl'
             }).
             when('/cann', {
-                templateUrl: '/static/partials/cann-table.html',
+                templateUrl: '/static/partials/table.html',
                 controller: 'CannTableCtrl'
             }).
             otherwise({
