@@ -3,22 +3,7 @@
     <head>
         <title>Flask EPL Table</title>
         <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-        <style>
-        .empty { height:37px; }
-        .table tbody tr td { vertical-align:middle; }
-        .table tbody tr td a { text-decoration:underline; }
-        .top, .top a { color:#27ae60; }
-        .mid, .mid a { color:#e67e22; }
-        .bot, .bot a { color:#c0392b; }
-        .detail p { margin:0px; }
-
-        path { stroke: steelblue; stroke-width: 1; fill: none; }
-        .axis { shape-rendering: crispEdges; }
-        .x.axis line { stroke: lightgrey; }
-        .x.axis .minor { stroke-opacity: .5; }
-        .x.axis path { stroke: #000; }
-        .y.axis line, .y.axis path { fill: none; stroke: #000; }
-        </style>
+        <link rel="stylesheet/less" type="text/css" href="{{ url_for('static', filename='css/style.less') }}" />
     </head>
 
     <body>
@@ -39,6 +24,9 @@
 
         <!-- Bootstrap -->
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+
+        <!-- LESS -->
+        <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/1.7.0/less.min.js"></script>
 
         <!-- My Stuff -->
         <script src="{{ url_for('static', filename='js/app.js') }}"></script>

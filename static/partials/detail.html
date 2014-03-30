@@ -12,5 +12,14 @@
     <p><b>Games Played:</b> {{ team.played }}</p>
     <p><b>Points:</b> {{ team.points }}</p>
     <p><b>Goal Difference:</b> {{ team.gd }}</p>
+
+    <table class="matches">
+      <tr class="points-{{ match.points }}" ng-repeat="match in team.matches">
+        <td ng-class="{our_team: match.home == team.name}" class="home_team">{{ match.home }}</td>
+        <td class="score">{{ match.home_score }}-{{ match.away_score }}</td> 
+        <td ng-class="{our_team: match.away == team.name}" class="away_team">{{ match.away }}</td>
+        <td class="date">{{ match.date }}</td>
+      </tr>
+    </ul>
     </div>
 </div>

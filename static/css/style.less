@@ -1,0 +1,122 @@
+@green:#27ae60;
+@orange:#e67e22;
+@red:#c0392b;
+
+.empty { 
+        height:37px; 
+}
+
+.table {
+        tbody {
+                tr {
+                        td { 
+                                vertical-align:middle; 
+                                a {
+                                        text-decoration:underline;
+                                }
+                        }
+                }
+        }
+}
+
+.top {
+        color:@green;
+        a {
+                color:@green;
+        }
+}
+
+.mid {
+        color:@orange;
+        a {
+                color:@orange;
+        }
+}
+
+.bot {
+        color:@red;
+        a {
+                color:@red;
+        }
+}
+
+.detail {
+        p { 
+                margin:0px; 
+        }
+}
+
+path { 
+        stroke: steelblue; stroke-width: 1; fill: none; 
+}
+
+.axis { 
+        shape-rendering: crispEdges; 
+
+        &.x {
+                line {
+                        stroke: lightgrey;
+                }
+
+                .minor {
+                        stroke-opacity: .5;
+                }
+
+                path {
+                        stroke: #000;
+                }
+        }
+
+        &.y {
+                line {
+                        fill: none; 
+                        stroke: #000;
+                }
+
+                path {
+                        fill: none; 
+                        stroke: #000;
+                }
+        }
+}
+
+.matches {
+        margin:20px;
+        
+        tr {
+                td {
+                        padding:4px 0px;
+
+                        &.home_team {
+                                width:150px;
+                                text-align:right;
+                        }
+
+                        &.score {
+                                width:60px;
+                                text-align:center;
+                        }
+
+                        &.away_team {
+                                width:150px;
+                        }
+
+                        &.date {
+                                font-style:italic;
+                                font-size:12px;
+                        }
+
+                        &.our_team {
+                                font-weight:bold;
+                        }
+                }
+
+                &.points-3 {
+                        color:@green;
+                }
+
+                &.points-0 {
+                        color:@red;
+                }
+        }
+}
